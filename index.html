@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-up Form</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Sign-up Form</h2>
+        <form id="signupForm">
+            <label for="email">User Email:</label>
+            <input type="text" id="email" name="email" required><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+            <button type="button" onclick="validateCredentials()">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        function validateCredentials() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            
+            const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[!@#$%^&*])(?=.*[0-9]).{8,}$/;
+
+            if (!emailRegex.test(email)) {
+                alert("Invalid email address. Please enter a valid email.");
+            } else if (!passwordRegex.test(password)) {
+                alert("Invalid password. Password must be at least 8 characters long and contain at least one uppercase letter, one special character, and one number.");
+            } else {
+                alert("Successful!");
+                document.getElementById("signupForm").reset();
+            }
+        }
+    </script>
+</body>
+</html>
